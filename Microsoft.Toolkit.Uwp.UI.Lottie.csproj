@@ -1,0 +1,393 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;Net5.0;Net6.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+    <DefineConstants>$(DefineConstants)TRACE;PUBLIC_LottieData;PUBLIC_Animatables;PUBLIC_CompMetadata;PUBLIC_UIDataCodeGen;PUBLIC_WinStorageStreamsData;PUBLIC_YamlData;PUBLIC_WinCompData;PUBLIC_WinUIXamlMediaData;PUBLIC_UIData</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+    <DefineConstants>$(DefineConstants)TRACE;PUBLIC_LottieData;PUBLIC_Animatables;PUBLIC_CompMetadata;PUBLIC_UIDataCodeGen;PUBLIC_WinStorageStreamsData;PUBLIC_YamlData;PUBLIC_WinCompData;PUBLIC_WinUIXamlMediaData;PUBLIC_UIData</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Lottie-Windows\source\Animatables\Animatable.cs" Link="Animatables\Animatable.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableVector2.cs" Link="Animatables\AnimatableVector2.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableVector2Type.cs" Link="Animatables\AnimatableVector2Type.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableVector3.cs" Link="Animatables\AnimatableVector3.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableVector3Type.cs" Link="Animatables\AnimatableVector3Type.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableXY.cs" Link="Animatables\AnimatableXY.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\AnimatableXYZ.cs" Link="Animatables\AnimatableXYZ.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\BezierSegment.cs" Link="Animatables\BezierSegment.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Color.cs" Link="Animatables\Color.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\ColorGradientStop.cs" Link="Animatables\ColorGradientStop.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\CubicBezier.cs" Link="Animatables\CubicBezier.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\CubicBezierEasing.cs" Link="Animatables\CubicBezierEasing.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Easing.cs" Link="Animatables\Easing.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Enum.cs" Link="Animatables\Enum.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Exceptions.cs" Link="Animatables\Exceptions.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\ExtensionMethods.cs" Link="Animatables\ExtensionMethods.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\GradientStop.cs" Link="Animatables\GradientStop.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\HoldEasing.cs" Link="Animatables\HoldEasing.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\IAnimatableValue.cs" Link="Animatables\IAnimatableValue.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\IAnimatableVector2.cs" Link="Animatables\IAnimatableVector2.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\IAnimatableVector3.cs" Link="Animatables\IAnimatableVector3.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\IGradient.cs" Link="Animatables\IGradient.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\IRadialGradient.cs" Link="Animatables\IRadialGradient.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\KeyFrame.cs" Link="Animatables\KeyFrame.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\LinearEasing.cs" Link="Animatables\LinearEasing.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Opacity.cs" Link="Animatables\Opacity.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\OpacityGradientStop.cs" Link="Animatables\OpacityGradientStop.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\PathGeometry.cs" Link="Animatables\PathGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Rotation.cs" Link="Animatables\Rotation.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Sequence.cs" Link="Animatables\Sequence.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Trim.cs" Link="Animatables\Trim.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Vector2.cs" Link="Animatables\Vector2.cs" />
+    <Compile Include="..\Lottie-Windows\source\Animatables\Vector3.cs" Link="Animatables\Vector3.cs" />
+    <Compile Include="..\Lottie-Windows\source\CompMetadata\PropertyBinding.cs" Link="CompMetadata\PropertyBinding.cs" />
+    <Compile Include="..\Lottie-Windows\source\DotLottie\DotLottieFile.cs" Link="DotLottie\DotLottieFile.cs" />
+    <Compile Include="..\Lottie-Windows\source\DotLottie\DotLottieFileAnimation.cs" Link="DotLottie\DotLottieFileAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\DotLottie\InvalidLottieFileException.cs" Link="DotLottie\InvalidLottieFileException.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataBool.cs" Link="GenericData\GenericDataBool.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataList.cs" Link="GenericData\GenericDataList.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataMap.cs" Link="GenericData\GenericDataMap.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataNumber.cs" Link="GenericData\GenericDataNumber.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataObject.cs" Link="GenericData\GenericDataObject.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataObjectType.cs" Link="GenericData\GenericDataObjectType.cs" />
+    <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataString.cs" Link="GenericData\GenericDataString.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Asset.cs" Link="LottieData\Asset.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\AssetCollection.cs" Link="LottieData\AssetCollection.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\BlendMode.cs" Link="LottieData\BlendMode.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\BlurDimension.cs" Link="LottieData\BlurDimension.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Char.cs" Link="LottieData\Char.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\DrawingDirection.cs" Link="LottieData\DrawingDirection.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\DropShadowEffect.cs" Link="LottieData\DropShadowEffect.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Effect.cs" Link="LottieData\Effect.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Ellipse.cs" Link="LottieData\Ellipse.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\EmbeddedImageAsset.cs" Link="LottieData\EmbeddedImageAsset.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ExtensionMethods.cs" Link="LottieData\ExtensionMethods.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ExternalImageAsset.cs" Link="LottieData\ExternalImageAsset.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Font.cs" Link="LottieData\Font.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\GaussianBlurEffect.cs" Link="LottieData\GaussianBlurEffect.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ImageAsset.cs" Link="LottieData\ImageAsset.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ImageLayer.cs" Link="LottieData\ImageLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Layer.cs" Link="LottieData\Layer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LayerCollection.cs" Link="LottieData\LayerCollection.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LayerCollectionAsset.cs" Link="LottieData\LayerCollectionAsset.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LinearGradientFill.cs" Link="LottieData\LinearGradientFill.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LinearGradientStroke.cs" Link="LottieData\LinearGradientStroke.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LottieComposition.cs" Link="LottieData\LottieComposition.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LottieCompositionValidator.cs" Link="LottieData\LottieCompositionValidator.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LottieObject.cs" Link="LottieData\LottieObject.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\LottieObjectType.cs" Link="LottieData\LottieObjectType.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Marker.cs" Link="LottieData\Marker.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Mask.cs" Link="LottieData\Mask.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\MergePaths.cs" Link="LottieData\MergePaths.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\NullLayer.cs" Link="LottieData\NullLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\CollapsePreCompsOptimizer.cs" Link="LottieData\Optimization\CollapsePreCompsOptimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\GradientStopOptimizer.cs" Link="LottieData\Optimization\GradientStopOptimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\LayerGroup.cs" Link="LottieData\Optimization\LayerGroup.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\LayersGraph.cs" Link="LottieData\Optimization\LayersGraph.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\LayersIndexMapper.cs" Link="LottieData\Optimization\LayersIndexMapper.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\LottieMergeOptimizer.cs" Link="LottieData\Optimization\LottieMergeOptimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\MergeHelper.cs" Link="LottieData\Optimization\MergeHelper.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\MergeResult.cs" Link="LottieData\Optimization\MergeResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\Optimizer.cs" Link="LottieData\Optimization\Optimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Optimization\TimeRange.cs" Link="LottieData\Optimization\TimeRange.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Path.cs" Link="LottieData\Path.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Polystar.cs" Link="LottieData\Polystar.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\PreCompLayer.cs" Link="LottieData\PreCompLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\RadialGradientFill.cs" Link="LottieData\RadialGradientFill.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\RadialGradientStroke.cs" Link="LottieData\RadialGradientStroke.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Rectangle.cs" Link="LottieData\Rectangle.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Repeater.cs" Link="LottieData\Repeater.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\RepeaterTransform.cs" Link="LottieData\RepeaterTransform.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\RoundCorners.cs" Link="LottieData\RoundCorners.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Serialization\LottieCompositionYamlSerializer.cs" Link="LottieData\Serialization\LottieCompositionYamlSerializer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Shape.cs" Link="LottieData\Shape.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeContentType.cs" Link="LottieData\ShapeContentType.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeFill.cs" Link="LottieData\ShapeFill.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeGroup.cs" Link="LottieData\ShapeGroup.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeLayer.cs" Link="LottieData\ShapeLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeLayerContent.cs" Link="LottieData\ShapeLayerContent.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeStroke.cs" Link="LottieData\ShapeStroke.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ShapeType.cs" Link="LottieData\ShapeType.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\SolidColorFill.cs" Link="LottieData\SolidColorFill.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\SolidColorStroke.cs" Link="LottieData\SolidColorStroke.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\SolidLayer.cs" Link="LottieData\SolidLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\TextLayer.cs" Link="LottieData\TextLayer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Tools\Stats.cs" Link="LottieData\Tools\Stats.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\Transform.cs" Link="LottieData\Transform.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\TrimPath.cs" Link="LottieData\TrimPath.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieData\ValidationIssues.cs" Link="LottieData\ValidationIssues.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieMetadata\Duration.cs" Link="LottieMetadata\Duration.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieMetadata\Frame.cs" Link="LottieMetadata\Frame.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieMetadata\LottieCompositionMetadata.cs" Link="LottieMetadata\LottieCompositionMetadata.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieMetadata\Marker.cs" Link="LottieMetadata\Marker.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Animatables.cs" Link="LottieReader\Serialization\Animatables.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\ArrayBuilder.cs" Link="LottieReader\Serialization\ArrayBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Assets.cs" Link="LottieReader\Serialization\Assets.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Chars.cs" Link="LottieReader\Serialization\Chars.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Effects.cs" Link="LottieReader\Serialization\Effects.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\EmptyList.cs" Link="LottieReader\Serialization\EmptyList.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Enums.cs" Link="LottieReader\Serialization\Enums.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Exceptions.cs" Link="LottieReader\Serialization\Exceptions.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Fonts.cs" Link="LottieReader\Serialization\Fonts.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Layers.cs" Link="LottieReader\Serialization\Layers.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieCompositionReader.cs" Link="LottieReader\Serialization\LottieCompositionReader.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieCompositionReaderException.cs" Link="LottieReader\Serialization\LottieCompositionReaderException.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieJsonArrayElement.cs" Link="LottieReader\Serialization\LottieJsonArrayElement.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieJsonDocument.cs" Link="LottieReader\Serialization\LottieJsonDocument.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieJsonElement.cs" Link="LottieReader\Serialization\LottieJsonElement.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\LottieJsonObjectElement.cs" Link="LottieReader\Serialization\LottieJsonObjectElement.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Markers.cs" Link="LottieReader\Serialization\Markers.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\ParsingIssues.cs" Link="LottieReader\Serialization\ParsingIssues.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\Reader.cs" Link="LottieReader\Serialization\Reader.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieReader\Serialization\ShapeLayerContents.cs" Link="LottieReader\Serialization\ShapeLayerContents.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\AnimatableVector3Rewriter.cs" Link="LottieToWinComp\AnimatableVector3Rewriter.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Animate.cs" Link="LottieToWinComp\Animate.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Brushes.cs" Link="LottieToWinComp\Brushes.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\CanvasGeometryCombiner.cs" Link="LottieToWinComp\CanvasGeometryCombiner.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\CompositeOpacity.cs" Link="LottieToWinComp\CompositeOpacity.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\CompositionContext.cs" Link="LottieToWinComp\CompositionContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\CompositionObjectFactory.cs" Link="LottieToWinComp\CompositionObjectFactory.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ContainerShapeOrVisual.cs" Link="LottieToWinComp\ContainerShapeOrVisual.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ConvertTo.cs" Link="LottieToWinComp\ConvertTo.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\CubicBezierFunction2.cs" Link="LottieToWinComp\CubicBezierFunction2.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Effects.cs" Link="LottieToWinComp\Effects.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Ellipses.cs" Link="LottieToWinComp\Ellipses.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ExpressionFactory.cs" Link="LottieToWinComp\ExpressionFactory.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Float32.cs" Link="LottieToWinComp\Float32.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\IDescribableExtensionMethods.cs" Link="LottieToWinComp\IDescribableExtensionMethods.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ImageLayerContext.cs" Link="LottieToWinComp\ImageLayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Images.cs" Link="LottieToWinComp\Images.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\LayerContext.cs" Link="LottieToWinComp\LayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Layers.cs" Link="LottieToWinComp\Layers.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\LayerTranslator.cs" Link="LottieToWinComp\LayerTranslator.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\LottieToMultiVersionWinCompTranslator.cs" Link="LottieToWinComp\LottieToMultiVersionWinCompTranslator.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\LottieToWinCompTranslator.cs" Link="LottieToWinComp\LottieToWinCompTranslator.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Masks.cs" Link="LottieToWinComp\Masks.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\MultiVersionTranslationResult.cs" Link="LottieToWinComp\MultiVersionTranslationResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Optimizer.cs" Link="LottieToWinComp\Optimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\PathGeometryGroup.cs" Link="LottieToWinComp\PathGeometryGroup.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Paths.cs" Link="LottieToWinComp\Paths.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\PreCompLayerContext.cs" Link="LottieToWinComp\PreCompLayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\PreComps.cs" Link="LottieToWinComp\PreComps.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ProgressMapFactory.cs" Link="LottieToWinComp\ProgressMapFactory.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\PropertyBindings.cs" Link="LottieToWinComp\PropertyBindings.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\PropertyBindingsParser.cs" Link="LottieToWinComp\PropertyBindingsParser.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\RectangleOrRoundedRectangleGeometry.cs" Link="LottieToWinComp\RectangleOrRoundedRectangleGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Rectangles.cs" Link="LottieToWinComp\Rectangles.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ShapeContext.cs" Link="LottieToWinComp\ShapeContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ShapeLayerContext.cs" Link="LottieToWinComp\ShapeLayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Shapes.cs" Link="LottieToWinComp\Shapes.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\SolidLayerContext.cs" Link="LottieToWinComp\SolidLayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\SolidLayers.cs" Link="LottieToWinComp\SolidLayers.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TextLayerContext.cs" Link="LottieToWinComp\TextLayerContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TextLayers.cs" Link="LottieToWinComp\TextLayers.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\ThemePropertyBindings.cs" Link="LottieToWinComp\ThemePropertyBindings.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\Transforms.cs" Link="LottieToWinComp\Transforms.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TranslationContext.cs" Link="LottieToWinComp\TranslationContext.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TranslationIssue.cs" Link="LottieToWinComp\TranslationIssue.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TranslationIssues.cs" Link="LottieToWinComp\TranslationIssues.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TranslationResult.cs" Link="LottieToWinComp\TranslationResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TranslatorConfiguration.cs" Link="LottieToWinComp\TranslatorConfiguration.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\TrimmedAnimatable.cs" Link="LottieToWinComp\TrimmedAnimatable.cs" />
+    <Compile Include="..\Lottie-Windows\source\LottieToWinComp\UapVersionRange.cs" Link="LottieToWinComp\UapVersionRange.cs" />
+    <Compile Include="..\Lottie-Windows\source\Lottie\Issue.cs" Link="Lottie\Issue.cs" />
+    <Compile Include="..\Lottie-Windows\source\Lottie\LottieVisualOptions.cs" Link="Lottie\LottieVisualOptions.cs" />
+    <Compile Include="..\Lottie-Windows\source\NullablesAttributes\NullablesAttributes.cs" Link="NullablesAttributes\NullablesAttributes.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\AlphanumericStringComparer.cs" Link="UIDataCodeGen\CodeGen\AlphanumericStringComparer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\CodeBuilder.cs" Link="UIDataCodeGen\CodeGen\CodeBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\CodegenConfiguration.cs" Link="UIDataCodeGen\CodeGen\CodegenConfiguration.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\ConstantType.cs" Link="UIDataCodeGen\CodeGen\ConstantType.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cppwinrt\CppNamespaceListBuilder.cs" Link="UIDataCodeGen\CodeGen\Cppwinrt\CppNamespaceListBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtCodegenResult.cs" Link="UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtCodegenResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtInstantiatorGenerator.cs" Link="UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtInstantiatorGenerator.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtStringifier.cs" Link="UIDataCodeGen\CodeGen\Cppwinrt\CppwinrtStringifier.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\CSharp\CSharpCodegenResult.cs" Link="UIDataCodeGen\CodeGen\CSharp\CSharpCodegenResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\CSharp\CSharpInstantiatorGenerator.cs" Link="UIDataCodeGen\CodeGen\CSharp\CSharpInstantiatorGenerator.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\CSharp\CSharpStringifier.cs" Link="UIDataCodeGen\CodeGen\CSharp\CSharpStringifier.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cx\CppNamespaceListBuilder.cs" Link="UIDataCodeGen\CodeGen\Cx\CppNamespaceListBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cx\CxCodegenResult.cs" Link="UIDataCodeGen\CodeGen\Cx\CxCodegenResult.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cx\CxInstantiatorGenerator.cs" Link="UIDataCodeGen\CodeGen\Cx\CxInstantiatorGenerator.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cx\CxStringifier.cs" Link="UIDataCodeGen\CodeGen\Cx\CxStringifier.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Cx\HeaderBuilder.cs" Link="UIDataCodeGen\CodeGen\Cx\HeaderBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\IAnimatedVisualInfo.cs" Link="UIDataCodeGen\CodeGen\IAnimatedVisualInfo.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\IAnimatedVisualSourceInfo.cs" Link="UIDataCodeGen\CodeGen\IAnimatedVisualSourceInfo.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\InstantiatorGeneratorBase.cs" Link="UIDataCodeGen\CodeGen\InstantiatorGeneratorBase.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\LoadedImageSurfaceInfo.cs" Link="UIDataCodeGen\CodeGen\LoadedImageSurfaceInfo.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\MarkerInfo.cs" Link="UIDataCodeGen\CodeGen\MarkerInfo.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\MatrixDecomposer.cs" Link="UIDataCodeGen\CodeGen\MatrixDecomposer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\NamedConstant.cs" Link="UIDataCodeGen\CodeGen\NamedConstant.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\NodeNamer.cs" Link="UIDataCodeGen\CodeGen\NodeNamer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\SourceMetadata.cs" Link="UIDataCodeGen\CodeGen\SourceMetadata.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Stringifier.cs" Link="UIDataCodeGen\CodeGen\Stringifier.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\ColumnData.cs" Link="UIDataCodeGen\CodeGen\Tables\ColumnData.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\GraphStatsMonospaceTableFormatter.cs" Link="UIDataCodeGen\CodeGen\Tables\GraphStatsMonospaceTableFormatter.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\LottieMarkersMonospaceTableFormatter.cs" Link="UIDataCodeGen\CodeGen\Tables\LottieMarkersMonospaceTableFormatter.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\MonospaceTableFormatter.cs" Link="UIDataCodeGen\CodeGen\Tables\MonospaceTableFormatter.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\Row.cs" Link="UIDataCodeGen\CodeGen\Tables\Row.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\TextAlignment.cs" Link="UIDataCodeGen\CodeGen\Tables\TextAlignment.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\Tables\ThemePropertiesMonospaceTableFormatter.cs" Link="UIDataCodeGen\CodeGen\Tables\ThemePropertiesMonospaceTableFormatter.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIDataCodeGen\CodeGen\TypeName.cs" Link="UIDataCodeGen\CodeGen\TypeName.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\CanonicalizedNode.cs" Link="UIData\Tools\CanonicalizedNode.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\Canonicalizer.cs" Link="UIData\Tools\Canonicalizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\Graph.cs" Link="UIData\Tools\Graph.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\GraphCompactor.cs" Link="UIData\Tools\GraphCompactor.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\ObjectGraph.cs" Link="UIData\Tools\ObjectGraph.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\Optimizer.cs" Link="UIData\Tools\Optimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\Properties.cs" Link="UIData\Tools\Properties.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\PropertyId.cs" Link="UIData\Tools\PropertyId.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\PropertyValueOptimizer.cs" Link="UIData\Tools\PropertyValueOptimizer.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\Stats.cs" Link="UIData\Tools\Stats.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\VisibilityAtProgress.cs" Link="UIData\Tools\VisibilityAtProgress.cs" />
+    <Compile Include="..\Lottie-Windows\source\UIData\Tools\VisibilityDescription.cs" Link="UIData\Tools\VisibilityDescription.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\AnimationController.cs" Link="WinCompData\AnimationController.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\BooleanKeyFrameAnimation.cs" Link="WinCompData\BooleanKeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ColorKeyFrameAnimation.cs" Link="WinCompData\ColorKeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionAnimation.cs" Link="WinCompData\CompositionAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionBorderMode.cs" Link="WinCompData\CompositionBorderMode.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionBrush.cs" Link="WinCompData\CompositionBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionClip.cs" Link="WinCompData\CompositionClip.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionColorBrush.cs" Link="WinCompData\CompositionColorBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionColorGradientStop.cs" Link="WinCompData\CompositionColorGradientStop.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionColorSpace.cs" Link="WinCompData\CompositionColorSpace.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionContainerShape.cs" Link="WinCompData\CompositionContainerShape.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionDropShadowSourcePolicy.cs" Link="WinCompData\CompositionDropShadowSourcePolicy.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionEasingFunction.cs" Link="WinCompData\CompositionEasingFunction.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionEffectBrush.cs" Link="WinCompData\CompositionEffectBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionEffectFactory.cs" Link="WinCompData\CompositionEffectFactory.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionEffectSourceParameter.cs" Link="WinCompData\CompositionEffectSourceParameter.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionEllipseGeometry.cs" Link="WinCompData\CompositionEllipseGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionGeometricClip.cs" Link="WinCompData\CompositionGeometricClip.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionGeometry.cs" Link="WinCompData\CompositionGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionGetValueStatus.cs" Link="WinCompData\CompositionGetValueStatus.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionGradientBrush.cs" Link="WinCompData\CompositionGradientBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionGradientExtendMode.cs" Link="WinCompData\CompositionGradientExtendMode.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionLinearGradientBrush.cs" Link="WinCompData\CompositionLinearGradientBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionMappingMode.cs" Link="WinCompData\CompositionMappingMode.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionMaskBrush.cs" Link="WinCompData\CompositionMaskBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionObject.cs" Link="WinCompData\CompositionObject.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionObjectType.cs" Link="WinCompData\CompositionObjectType.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionPath.cs" Link="WinCompData\CompositionPath.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionPathGeometry.cs" Link="WinCompData\CompositionPathGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionPropertySet.cs" Link="WinCompData\CompositionPropertySet.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionRadialGradientBrush.cs" Link="WinCompData\CompositionRadialGradientBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionRectangleGeometry.cs" Link="WinCompData\CompositionRectangleGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionRoundedRectangleGeometry.cs" Link="WinCompData\CompositionRoundedRectangleGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionShadow.cs" Link="WinCompData\CompositionShadow.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionShape.cs" Link="WinCompData\CompositionShape.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionSpriteShape.cs" Link="WinCompData\CompositionSpriteShape.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionStrokeCap.cs" Link="WinCompData\CompositionStrokeCap.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionStrokeLineJoin.cs" Link="WinCompData\CompositionStrokeLineJoin.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionSurfaceBrush.cs" Link="WinCompData\CompositionSurfaceBrush.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionViewBox.cs" Link="WinCompData\CompositionViewBox.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CompositionVisualSurface.cs" Link="WinCompData\CompositionVisualSurface.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Compositor.cs" Link="WinCompData\Compositor.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ContainerVisual.cs" Link="WinCompData\ContainerVisual.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\CubicBezierEasingFunction.cs" Link="WinCompData\CubicBezierEasingFunction.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\DropShadow.cs" Link="WinCompData\DropShadow.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ExpressionAnimation.cs" Link="WinCompData\ExpressionAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Boolean.cs" Link="WinCompData\Expressions\Boolean.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Color.cs" Link="WinCompData\Expressions\Color.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Expression.cs" Link="WinCompData\Expressions\Expression.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\ExpressionType.cs" Link="WinCompData\Expressions\ExpressionType.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Expression_.cs" Link="WinCompData\Expressions\Expression_.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Matrix3x2.cs" Link="WinCompData\Expressions\Matrix3x2.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Precedence.cs" Link="WinCompData\Expressions\Precedence.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Scalar.cs" Link="WinCompData\Expressions\Scalar.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Vector2.cs" Link="WinCompData\Expressions\Vector2.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Vector3.cs" Link="WinCompData\Expressions\Vector3.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Vector4.cs" Link="WinCompData\Expressions\Vector4.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Expressions\Void.cs" Link="WinCompData\Expressions\Void.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ICompositionSurface.cs" Link="WinCompData\ICompositionSurface.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\IContainShapes.cs" Link="WinCompData\IContainShapes.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\IDescribable.cs" Link="WinCompData\IDescribable.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\InsetClip.cs" Link="WinCompData\InsetClip.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\KeyFrameAnimation.cs" Link="WinCompData\KeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\KeyFrameAnimation_.cs" Link="WinCompData\KeyFrameAnimation_.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\KeyFrameType.cs" Link="WinCompData\KeyFrameType.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\LayerVisual.cs" Link="WinCompData\LayerVisual.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\LinearEasingFunction.cs" Link="WinCompData\LinearEasingFunction.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\MetaData\PropertySetValueType.cs" Link="WinCompData\MetaData\PropertySetValueType.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\MetaData\UapVersionAttribute.cs" Link="WinCompData\MetaData\UapVersionAttribute.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgce\CompositeEffect.cs" Link="WinCompData\Mgce\CompositeEffect.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgce\GaussianBlurEffect.cs" Link="WinCompData\Mgce\GaussianBlurEffect.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgce\GraphicsEffectBase.cs" Link="WinCompData\Mgce\GraphicsEffectBase.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgce\GraphicsEffectType.cs" Link="WinCompData\Mgce\GraphicsEffectType.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgcg\CanvasFigureLoop.cs" Link="WinCompData\Mgcg\CanvasFigureLoop.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgcg\CanvasFilledRegionDetermination.cs" Link="WinCompData\Mgcg\CanvasFilledRegionDetermination.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgcg\CanvasGeometry.cs" Link="WinCompData\Mgcg\CanvasGeometry.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgcg\CanvasGeometryCombine.cs" Link="WinCompData\Mgcg\CanvasGeometryCombine.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgcg\CanvasPathBuilder.cs" Link="WinCompData\Mgcg\CanvasPathBuilder.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgc\CanvasComposite.cs" Link="WinCompData\Mgc\CanvasComposite.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Mgc\CanvasDevice.cs" Link="WinCompData\Mgc\CanvasDevice.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\PathKeyFrameAnimation.cs" Link="WinCompData\PathKeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ScalarKeyFrameAnimation.cs" Link="WinCompData\ScalarKeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\ShapeVisual.cs" Link="WinCompData\ShapeVisual.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\SpriteVisual.cs" Link="WinCompData\SpriteVisual.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\StepEasingFunction.cs" Link="WinCompData\StepEasingFunction.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Vector2KeyFrameAnimation.cs" Link="WinCompData\Vector2KeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Vector3KeyFrameAnimation.cs" Link="WinCompData\Vector3KeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Vector4KeyFrameAnimation.cs" Link="WinCompData\Vector4KeyFrameAnimation.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Visual.cs" Link="WinCompData\Visual.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Wg\IGeometrySource2D.cs" Link="WinCompData\Wg\IGeometrySource2D.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Wui\Color.cs" Link="WinCompData\Wui\Color.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinCompData\Wui\Colors.cs" Link="WinCompData\Wui\Colors.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinStorageStreamsData\IRandomAccessStream.cs" Link="WinStorageStreamsData\IRandomAccessStream.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinUIXamlMediaData\LoadedImageSurface.cs" Link="WinUIXamlMediaData\LoadedImageSurface.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinUIXamlMediaData\LoadedImageSurfaceFromStream.cs" Link="WinUIXamlMediaData\LoadedImageSurfaceFromStream.cs" />
+    <Compile Include="..\Lottie-Windows\source\WinUIXamlMediaData\LoadedImageSurfaceFromUri.cs" Link="WinUIXamlMediaData\LoadedImageSurfaceFromUri.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlFactory.cs" Link="YamlData\YamlFactory.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlMap.cs" Link="YamlData\YamlMap.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlObject.cs" Link="YamlData\YamlObject.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlObjectKind.cs" Link="YamlData\YamlObjectKind.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlScalar.cs" Link="YamlData\YamlScalar.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlSequence.cs" Link="YamlData\YamlSequence.cs" />
+    <Compile Include="..\Lottie-Windows\source\YamlData\YamlWriter.cs" Link="YamlData\YamlWriter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Animatables\" />
+    <Folder Include="CompMetadata\" />
+    <Folder Include="DotLottie\" />
+    <Folder Include="GenericData\" />
+    <Folder Include="LottieData\Optimization\" />
+    <Folder Include="LottieData\Serialization\" />
+    <Folder Include="LottieData\Tools\" />
+    <Folder Include="LottieMetadata\" />
+    <Folder Include="LottieReader\Serialization\" />
+    <Folder Include="LottieToWinComp\" />
+    <Folder Include="YamlData\" />
+    <Folder Include="WinUIXamlMediaData\" />
+    <Folder Include="WinStorageStreamsData\" />
+    <Folder Include="WinCompData\Expressions\" />
+    <Folder Include="NullablesAttributes\" />
+    <Folder Include="UIDataCodeGen\CodeGen\Cppwinrt\" />
+    <Folder Include="UIDataCodeGen\CodeGen\CSharp\" />
+    <Folder Include="UIDataCodeGen\CodeGen\Cx\" />
+    <Folder Include="UIDataCodeGen\CodeGen\Tables\" />
+    <Folder Include="UIDataCodeGen\Serialization\" />
+    <Folder Include="UIData\Tools\" />
+    <Folder Include="WinCompData\MetaData\" />
+    <Folder Include="WinCompData\Mgc\" />
+    <Folder Include="WinCompData\Mgce\" />
+    <Folder Include="WinCompData\Mgcg\" />
+    <Folder Include="WinCompData\Wg\" />
+    <Folder Include="WinCompData\Wui\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="SKLottie" />
+	</ItemGroup>
+</Project>
