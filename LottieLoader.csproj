@@ -388,6 +388,7 @@
 
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="SKLottie" />
 		<InternalsVisibleTo Include="*" />
 	</ItemGroup>
 </Project>
