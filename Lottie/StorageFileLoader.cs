@@ -6,6 +6,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData;
 
@@ -22,7 +23,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
         public static async Task<LottieComposition> LoadAsync
         (
             string              fileName,
-            LottieVisualOptions options=LottieVisualOptions.All
+            LottieVisualOptions options = LottieVisualOptions.All
         )
         {
             if (string.IsNullOrWhiteSpace
@@ -45,6 +46,27 @@ namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
             return await LoadAsync
                        (
                         loader.GetJsonStreamAsync,
+                        options
+                       );
+        }
+
+
+        public static async Task<LottieComposition> LoadAsync
+        (
+            Stream              lottieStream,
+            LottieVisualOptions options = LottieVisualOptions.All
+        )
+        {
+            var loadingTask = Task.FromResult<(string?, Stream?)>
+                (
+                 ("",
+                  lottieStream)
+                );
+
+
+            return await LoadAsync
+                       (
+                        () => loadingTask,
                         options
                        );
         }
