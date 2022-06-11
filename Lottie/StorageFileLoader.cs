@@ -8,9 +8,10 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData;
+using CommunityToolkit.WinUI.Lottie;
+using CommunityToolkit.WinUI.Lottie.LottieData;
 
-namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
+namespace CommunityToolkit.WinUI.Lottie
 {
     /// <summary>
     /// Loads files from a <see cref="StorageFile"/>. Supports raw

@@ -6,10 +6,11 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Toolkit.Uwp.UI.Lottie.CompMetadata;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData;
+using CommunityToolkit.WinUI.Lottie;
+using CommunityToolkit.WinUI.Lottie.CompMetadata;
+using CommunityToolkit.WinUI.Lottie.LottieData;
 
-namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
+namespace CommunityToolkit.WinUI.Lottie
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -54,7 +55,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
         internal LottieComposition? LottieComposition { get; set; }
 
         // Holds the translated Visual. Only used if one of the codegen or XML options was selected.
-        internal WinCompData.Visual? RootVisual { get; set; }
+        internal CommunityToolkit.WinUI.Lottie.WinCompData.Visual? RootVisual { get; set; }
 
         // The UAP version required by the translated code. Only used if one of the codegen or
         // XML options was selected.

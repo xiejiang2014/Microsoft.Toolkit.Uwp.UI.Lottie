@@ -4,12 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData.Optimization;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieData.Serialization;
-using Microsoft.Toolkit.Uwp.UI.Lottie.LottieToWinComp;
+using CommunityToolkit.WinUI.Lottie.LottieData;
+using CommunityToolkit.WinUI.Lottie.LottieData.Optimization;
+using CommunityToolkit.WinUI.Lottie.LottieData.Serialization;
+using CommunityToolkit.WinUI.Lottie.LottieToWinComp;
 
-namespace Microsoft.Toolkit.Uwp.UI.Lottie.Lottie
+namespace CommunityToolkit.WinUI.Lottie
 {
     public abstract class Loader : IDisposable
     {
