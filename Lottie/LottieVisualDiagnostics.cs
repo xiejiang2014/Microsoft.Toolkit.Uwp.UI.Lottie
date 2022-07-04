@@ -19,8 +19,6 @@ namespace CommunityToolkit.WinUI.Lottie
     /// </summary>
     sealed class LottieVisualDiagnostics
     {
-        public string FileName { get; internal set; } = string.Empty;
-
         public TimeSpan Duration => LottieComposition?.Duration ?? TimeSpan.Zero;
 
         public TimeSpan ReadTime { get; internal set; }
@@ -60,7 +58,7 @@ namespace CommunityToolkit.WinUI.Lottie
         // The UAP version required by the translated code. Only used if one of the codegen or
         // XML options was selected.
         internal uint RequiredUapVersion { get; set; }
-        
+
 
         // Describes the property bindings in the ThemingPropertySet.
         internal IReadOnlyList<PropertyBinding>? ThemePropertyBindings { get; set; }
@@ -68,20 +66,19 @@ namespace CommunityToolkit.WinUI.Lottie
         internal LottieVisualDiagnostics Clone() =>
             new LottieVisualDiagnostics
             {
-                FileName = FileName,
-                InstantiationTime = InstantiationTime,
-                JsonParsingIssues = JsonParsingIssues,
-                LottieComposition = LottieComposition,
+                InstantiationTime      = InstantiationTime,
+                JsonParsingIssues      = JsonParsingIssues,
+                LottieComposition      = LottieComposition,
                 LottieValidationIssues = LottieValidationIssues,
-                Options = Options,
-                ParseTime = ParseTime,
-                ReadTime = ReadTime,
-                RequiredUapVersion = RequiredUapVersion,
-                RootVisual = RootVisual,
-                ThemePropertyBindings = ThemePropertyBindings,
-                TranslationIssues = TranslationIssues,
-                TranslationTime = TranslationTime,
-                ValidationTime = ValidationTime,
+                Options                = Options,
+                ParseTime              = ParseTime,
+                ReadTime               = ReadTime,
+                RequiredUapVersion     = RequiredUapVersion,
+                RootVisual             = RootVisual,
+                ThemePropertyBindings  = ThemePropertyBindings,
+                TranslationIssues      = TranslationIssues,
+                TranslationTime        = TranslationTime,
+                ValidationTime         = ValidationTime,
             };
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }

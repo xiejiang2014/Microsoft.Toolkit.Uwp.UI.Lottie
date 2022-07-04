@@ -19,22 +19,98 @@ namespace CommunityToolkit.WinUI.Lottie
              "A115C46A-254C-43E6-A3C7-9DE516C3C3C8"
             );
 
-        /// <summary>
-        /// Asynchonously loads an <see cref="AnimatedVisualFactory"/> that can be
-        /// used to instantiate IAnimatedVisual instances.
-        /// </summary>
-        /// <param name="jsonLoader">A delegate that asynchronously loads the JSON for
-        /// a Lottie file.</param>
-        /// <param name="imageLoader">A delegate that loads images that support a Lottie file.</param>
-        /// <param name="options">Options.</param>
-        /// <returns>An <see cref="AnimatedVisualFactory"/> that can be used
-        /// to instantiate IAnimatedVisual instances.</returns>
-        private protected static async Task<LottieComposition> LoadAsync
+        public static async Task<LottieComposition> LoadAsync
         (
-            Func<Task<(string? name, Stream? stream)>> jsonLoader,
-            LottieVisualOptions                        options
+            string              fileName,
+            LottieVisualOptions options = LottieVisualOptions.All
         )
         {
+            Loader loader = null;
+
+            //读取.lottie文件(其实就是.zip文件)
+            if (fileName.EndsWith
+                    (
+                     ".lottie",
+                     StringComparison.OrdinalIgnoreCase
+                    ) ||
+                fileName.EndsWith
+                    (
+                     ".zip",
+                     StringComparison.OrdinalIgnoreCase
+                    )
+               )
+            {
+                loader = new ZipFileLoader
+                    (
+                     fileName
+                    );
+            }
+            //读取 .json 文件
+            else if (fileName.EndsWith
+                         (
+                          ".json",
+                          StringComparison.OrdinalIgnoreCase
+                         )
+                    )
+            {
+                loader = new JsonFileLoader
+                    (
+                     fileName
+                    );
+            }
+
+            if (loader is null)
+            {
+                throw new FormatException
+                    (
+                     "unsupported file format."
+                    );
+            }
+
+
+            return await loader.LoadAsyncInner
+                       (
+                        options
+                       );
+        }
+
+
+        protected readonly string FileName;
+
+        public Loader
+        (
+            string fileName
+        )
+        {
+            FileName = fileName;
+        }
+
+
+        private protected async Task<LottieComposition> LoadAsyncInner
+        (
+            LottieVisualOptions options
+        )
+        {
+            Stream stream = null;
+
+            if (File.Exists
+                    (
+                     FileName
+                    ))
+            {
+                stream = await GetJsonStreamAsync();
+            }
+
+
+            if (stream is null)
+            {
+                throw new ArgumentException
+                    (
+                     "无法处理指定的Json数据流",
+                     nameof(stream)
+                    );
+            }
+
             LottieVisualDiagnostics? diagnostics  = null;
             var                      timeMeasurer = TimeMeasurer.Create();
 
@@ -48,22 +124,11 @@ namespace CommunityToolkit.WinUI.Lottie
             }
 
 
-            // Get the file name and JSON contents.
-            var (fileName, jsonStream) = await jsonLoader();
-
             if (diagnostics is not null)
             {
-                diagnostics.FileName = fileName ?? string.Empty;
                 diagnostics.ReadTime = timeMeasurer.GetElapsedAndRestart();
             }
 
-            if (jsonStream is null)
-            {
-                throw new ApplicationException
-                    (
-                     "无法处理指定的Json数据流"
-                    );
-            }
 
             // Parsing large Lottie files can take significant time. Do it on
             // another thread.
@@ -75,13 +140,17 @@ namespace CommunityToolkit.WinUI.Lottie
                      lottieComposition =
                          LottieCompositionReader.ReadLottieCompositionFromJsonStream
                              (
-                              jsonStream,
+                              stream,
                               LottieCompositionReader.Options.IgnoreMatchNames,
                               out var readerIssues
                              );
 
                      if (lottieComposition is not null)
                      {
+                         //读取外置图像
+                         ReadExternalImageAssets(lottieComposition);
+
+
                          lottieComposition = LottieMergeOptimizer.Optimize
                              (
                               lottieComposition
@@ -133,6 +202,13 @@ namespace CommunityToolkit.WinUI.Lottie
 
             return lottieComposition;
         }
+
+        protected abstract void ReadExternalImageAssets(LottieComposition lottieComposition);
+
+        protected abstract Task<Stream> GetJsonStreamAsync
+        (
+        );
+
 
         static IReadOnlyList<Issue> ToIssues
         (

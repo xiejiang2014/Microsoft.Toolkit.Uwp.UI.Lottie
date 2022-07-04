@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;Net5.0;Net6.0</TargetFrameworks>
-    <Version>1.0.4.0</Version>
+    <Version>2.0.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -61,7 +61,6 @@
     <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataObjectType.cs" Link="GenericData\GenericDataObjectType.cs" />
     <Compile Include="..\Lottie-Windows\source\GenericData\GenericDataString.cs" Link="GenericData\GenericDataString.cs" />
     <Compile Include="..\Lottie-Windows\source\LottieData\Asset.cs" Link="LottieData\Asset.cs" />
-    <Compile Include="..\Lottie-Windows\source\LottieData\AssetCollection.cs" Link="LottieData\AssetCollection.cs" />
     <Compile Include="..\Lottie-Windows\source\LottieData\BlendMode.cs" Link="LottieData\BlendMode.cs" />
     <Compile Include="..\Lottie-Windows\source\LottieData\BlurDimension.cs" Link="LottieData\BlurDimension.cs" />
     <Compile Include="..\Lottie-Windows\source\LottieData\Char.cs" Link="LottieData\Char.cs" />
@@ -384,7 +383,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+    <PackageReference Include="System.Text.Json" Version="6.0.3" />
   </ItemGroup>
 
 	<ItemGroup>
