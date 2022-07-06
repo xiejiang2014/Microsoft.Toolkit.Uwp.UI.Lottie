@@ -1,17 +1,20 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.WinUI.Lottie.LottieData;
 using CommunityToolkit.WinUI.Lottie.LottieData.Optimization;
 using CommunityToolkit.WinUI.Lottie.LottieData.Serialization;
 using CommunityToolkit.WinUI.Lottie.LottieToWinComp;
+using Path = System.IO.Path;
 
 namespace CommunityToolkit.WinUI.Lottie
 {
-    public abstract class Loader : IDisposable
+    public static class Loader
     {
         // Identifies the bound property names in SourceMetadata.
         static readonly Guid s_propertyBindingNamesKey = new Guid
@@ -19,47 +22,60 @@ namespace CommunityToolkit.WinUI.Lottie
              "A115C46A-254C-43E6-A3C7-9DE516C3C3C8"
             );
 
+
+        public static Task<LottieComposition> LoadAsync
+        (
+            Stream              stream,
+            LottieVisualOptions options = LottieVisualOptions.All
+        )
+        {
+            return LoadAsync
+                (
+                 stream,
+                 null,
+                 options
+                );
+        }
+
         public static async Task<LottieComposition> LoadAsync
         (
             string              fileName,
             LottieVisualOptions options = LottieVisualOptions.All
         )
         {
-            Loader loader = null;
+            Stream?     jsonStream = null;
+            ZipArchive? zipArchive = null;
 
             //读取.lottie文件(其实就是.zip文件)
-            if (fileName.EndsWith
-                    (
-                     ".lottie",
-                     StringComparison.OrdinalIgnoreCase
-                    ) ||
-                fileName.EndsWith
-                    (
-                     ".zip",
-                     StringComparison.OrdinalIgnoreCase
-                    )
-               )
+
+            var fileExt = Path
+                         .GetExtension
+                              (
+                               fileName
+                              )
+                         .ToLower();
+
+            switch (fileExt)
             {
-                loader = new ZipFileLoader
-                    (
-                     fileName
-                    );
-            }
-            //读取 .json 文件
-            else if (fileName.EndsWith
-                         (
-                          ".json",
-                          StringComparison.OrdinalIgnoreCase
-                         )
-                    )
-            {
-                loader = new JsonFileLoader
-                    (
-                     fileName
-                    );
+                case ".lottie":
+                case ".zip":
+                    (jsonStream, zipArchive) = GetZipArchiveStream
+                        (
+                         fileName
+                        );
+                    break;
+
+                case ".json":
+                    jsonStream = GetJsonFileStream
+                        (
+                         fileName
+                        );
+
+                    break;
             }
 
-            if (loader is null)
+
+            if (jsonStream is null)
             {
                 throw new FormatException
                     (
@@ -68,49 +84,63 @@ namespace CommunityToolkit.WinUI.Lottie
             }
 
 
-            return await loader.LoadAsyncInner
+            return await LoadAsync
                        (
+                        jsonStream,
+                        zipArchive,
                         options
                        );
         }
 
 
-        protected readonly string FileName;
-
-        public Loader
+        private static (Stream? jsonStream, ZipArchive zipArchive) GetZipArchiveStream
         (
             string fileName
         )
         {
-            FileName = fileName;
+            var zipFileStream = new FileStream
+                (
+                 fileName,
+                 FileMode.Open,
+                 FileAccess.Read,
+                 FileShare.Read
+                );
+
+            var zipArchive = new ZipArchive
+                (
+                 zipFileStream,
+                 ZipArchiveMode.Read
+                );
+
+            var zipArchiveEntry = zipArchive.GetEntry
+                (
+                 "data.json"
+                );
+
+            return (zipArchiveEntry?.Open(), zipArchive);
+        }
+
+        private static Stream? GetJsonFileStream
+        (
+            string fileName
+        )
+        {
+            return new FileStream
+                (
+                 fileName,
+                 FileMode.Open,
+                 FileAccess.Read
+                );
         }
 
 
-        private protected async Task<LottieComposition> LoadAsyncInner
+        private static async Task<LottieComposition> LoadAsync
         (
+            Stream              jsonStream,
+            ZipArchive?         zipArchive,
             LottieVisualOptions options
         )
         {
-            Stream stream = null;
-
-            if (File.Exists
-                    (
-                     FileName
-                    ))
-            {
-                stream = await GetJsonStreamAsync();
-            }
-
-
-            if (stream is null)
-            {
-                throw new ArgumentException
-                    (
-                     "无法处理指定的Json数据流",
-                     nameof(stream)
-                    );
-            }
-
             LottieVisualDiagnostics? diagnostics  = null;
             var                      timeMeasurer = TimeMeasurer.Create();
 
@@ -140,7 +170,7 @@ namespace CommunityToolkit.WinUI.Lottie
                      lottieComposition =
                          LottieCompositionReader.ReadLottieCompositionFromJsonStream
                              (
-                              stream,
+                              jsonStream,
                               LottieCompositionReader.Options.IgnoreMatchNames,
                               out var readerIssues
                              );
@@ -148,7 +178,11 @@ namespace CommunityToolkit.WinUI.Lottie
                      if (lottieComposition is not null)
                      {
                          //读取外置图像
-                         ReadExternalImageAssets(lottieComposition);
+                         ReadExternalImageAssets
+                             (
+                              lottieComposition,
+                              zipArchive
+                             );
 
 
                          lottieComposition = LottieMergeOptimizer.Optimize
@@ -203,14 +237,100 @@ namespace CommunityToolkit.WinUI.Lottie
             return lottieComposition;
         }
 
-        protected abstract void ReadExternalImageAssets(LottieComposition lottieComposition);
-
-        protected abstract Task<Stream> GetJsonStreamAsync
+        private static void ReadExternalImageAssets
         (
-        );
+            LottieComposition lottieComposition,
+            ZipArchive?       zipArchive
+        )
+        {
+            if (zipArchive is null)
+            {
+                return;
+            }
 
 
-        static IReadOnlyList<Issue> ToIssues
+            var imageEntries = zipArchive.Entries
+                                         .Where
+                                              (
+                                               v =>
+                                                   v.Name.EndsWith
+                                                       (
+                                                        "png",
+                                                        StringComparison.OrdinalIgnoreCase
+                                                       ) ||
+                                                   v.Name.EndsWith
+                                                       (
+                                                        "jpg",
+                                                        StringComparison.OrdinalIgnoreCase
+                                                       ) ||
+                                                   v.Name.EndsWith
+                                                       (
+                                                        "jpeg",
+                                                        StringComparison.OrdinalIgnoreCase
+                                                       )
+                                              );
+
+            foreach (var zipArchiveEntry in imageEntries)
+            {
+                var externalImageAsset = lottieComposition.Assets
+                                                          .OfType<ExternalImageAsset>()
+                                                          .FirstOrDefault
+                                                               (
+                                                                v => v.FileName == zipArchiveEntry.Name
+                                                               );
+
+                //将 externalImageAsset 转换为 EmbeddedImageAsset
+                if (externalImageAsset is not null)
+                {
+                    lottieComposition.Assets.Remove
+                        (
+                         externalImageAsset
+                        );
+
+                    byte[] buffer = new byte[zipArchiveEntry.Length];
+                    zipArchiveEntry.Open()
+                                   .Read
+                                        (
+                                         buffer,
+                                         0,
+                                         (int)zipArchiveEntry.Length
+                                        );
+
+
+                    var format = System.IO.Path.GetExtension
+                                     (
+                                      zipArchiveEntry.Name
+                                     ) switch
+
+                                 {
+                                     ".png"  => "png",
+                                     ".jpg"  => "jpg",
+                                     ".jpeg" => "jpg",
+                                     _ => throw new FormatException
+                                              (
+                                               "unsupported file format."
+                                              )
+                                 };
+
+                    var embeddedImageAsset = new EmbeddedImageAsset
+                        (
+                         externalImageAsset.Id,
+                         externalImageAsset.Width,
+                         externalImageAsset.Height,
+                         buffer,
+                         format
+                        );
+
+                    lottieComposition.Assets.Add
+                        (
+                         embeddedImageAsset
+                        );
+                }
+            }
+        }
+
+
+        private static IReadOnlyList<Issue> ToIssues
         (
             IEnumerable<(string Code, string Description)> issues
         ) =>
@@ -264,7 +384,5 @@ namespace CommunityToolkit.WinUI.Lottie
                 return result;
             }
         }
-
-        public abstract void Dispose();
     }
 }
